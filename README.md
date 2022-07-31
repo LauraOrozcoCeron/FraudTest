@@ -22,4 +22,4 @@ Los principales proyectos de R5 vienen encaminados al sector vehiculos. Usted de
 
 * Nota2: puedes apoyarte de demas carpetas o archivos que veas necesarios para que tu codigo quede mas organizado
 
-* Nota3: Muchos exitos!
+* Nota3: Muchos exitos!, cualquier duda puedes escribirme por wp: 3113716605, en serio, cualquier duda.
