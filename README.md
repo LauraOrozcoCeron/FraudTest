@@ -8,7 +8,7 @@ Los principales proyectos de R5 vienen encaminados al sector vehiculos. Usted de
 
 1) Cree una base de datos (puede ser local) que debe contener una tabla llamada "fraudes" con la información contenida en el archivo csv. (el archivo create_table.txt te ayudará)
 
-2) Explore la data de fraudes con sql, replique la salida
+2) Con su base de datos cargada, replique la siguente salida sin usar subconsultas.
 
 ![Salidaesperada](./data/salida_esperada.png)
 
