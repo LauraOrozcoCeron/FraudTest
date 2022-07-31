@@ -2,11 +2,11 @@
 
 Los principales proyectos de R5 vienen encaminados al sector vehiculos. Usted deberá apoyarse de sus conocimientos para cumplir el siguiente objetivo:
 
-* **Reducir perdidas por fraude en las reclamacines de siniestro**
+* **Reducir perdidas por fraude en las reclamaciones de siniestro**
 
 ¿Que debe incluir tu solución?
 
-1) Cree una base de datos (puede ser local) que debe contener una tabla llamada "fraudes" con la información contenida en el archivo csv. (el archivo create_table.txt te ayudará)
+1) Cree una base de datos (puede ser local) que debe contener una tabla llamada "fraudes" con la información contenida en ./data/fraude.csv. (el archivo create_table.txt te ayudará)
 
 2) Con su base de datos cargada, replique la siguente salida sin usar subconsultas.
 
