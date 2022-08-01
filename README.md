@@ -18,7 +18,7 @@ Los principales proyectos de R5 vienen encaminados al sector vehiculos. Usted de
 
 5) automatice su pipeline de entrenamiento en el archivo *train.py*, imprimiendo por consola o exportando los principales hallazgos. Exporte el modelo y lo guarda en la carpeta *./models*. En el archivo *predict.py* escriba el pipeline de prediccion, pruebelo con el caso particular que usted desee e imprima por consola este caso y su valor predicho (en proabilidades puede ser).
 
-6) Comenta como utilizaría el negocio este modelo para reducir las predidas por fraude y comenta brevemente como llevarias a producción este proyecto.
+6) Comenta como utilizaría el negocio este modelo para reducir las predidas por fraude, como lo evaluarias frente a las necesidades del negocio (diferente a las métricas ya usadas) y comenta brevemente como llevarias a producción este proyecto.
 
 * Nota1: Crea un repositorio que contenga en el readme.md las instrucciones necesarias para instalar y correr tu proyecto.
 
