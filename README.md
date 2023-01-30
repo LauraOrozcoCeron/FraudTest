@@ -6,24 +6,29 @@ Los principales proyectos de R5 vienen encaminados al sector vehículos. Usted d
 
 ¿Qué debe incluir tu solución?
 
-1) Cree una base de datos en PostgreSql (puede ser local) que debe contener una tabla llamada "fraudes" con la información contenida en ./data/fraude.csv. (el archivo ./data/create_table.txt te ayudará)
+1. Cree una base de datos en PostgreSql (puede ser local) que debe contener una tabla llamada "fraudes" con la información contenida en ./data/fraude.csv. (el archivo ./data/create_table.txt te ayudará)
 
-2) Con su base de datos cargada, replique la siguiente salida sin usar subconsultas.
+2. Con su base de datos cargada, usando solo SQL replique la siguiente salida sin usar subconsultas.
 
 ![Salidaesperada](./data/salida_esperada.png)
 
-3) conéctese desde Python a la tabla fraudes (la de la base de datos creada, no directamente del .csv) y léala con un query que la traiga lo más limpia posible.
+3. conéctese desde Python a la tabla fraudes (la de la base de datos creada, no directamente del .csv) y léala con un query que la traiga lo más limpia posible.
 
-4) en la carpeta *./notebooks* desarrolle la solución que debe contener un análisis descriptivo de los datos y un modelo de machine learning que ayude a cumplir los objetivos (no se enrede mucho con hacer el mejor modelo, enfóquese en que sea algo funcional).
+4. en la carpeta *./notebooks* desarrolle o un notebook de Jupyter o un script de Python su solución que debe contener al menos: 
 
-5) automaticé su pipeline de entrenamiento en el archivo *train.py*, imprimiendo por consola o exportando los principales hallazgos. Exporte el modelo y lo guarda en la carpeta *./models*. En el archivo *predict.py* escriba el pipeline de predicción, pruébelo con el caso particular que usted desee e imprima por consola este caso y su valor predicho (en probabilidades puede ser).
+* Un análisis descriptivo de los datos 
+* Un modelo de machine learning que prediga la probabilidad de que una reclamación sea o no un fraude (no se enrede mucho con hacer el mejor modelo, enfóquese en que sea algo funcional).
 
-6) Comenta como utilizaría el negocio este modelo para reducir las perdidas por fraude, como lo evaluarías frente a las necesidades del negocio (diferente a las métricas ya usadas) y comenta brevemente como llevarías a producción este proyecto.
+5. automaticé su pipeline de entrenamiento en el archivo *train.py*, imprimiendo por consola las métricas o exportando los principales hallazgos. Exporte el modelo y lo guarda en la carpeta *./models*. En el archivo *predict.py* escriba el pipeline de predicción, pruébelo con el caso particular que usted desee e imprima por consola este caso y su probabilidad predicha.
+
+6. Comenta como utilizaría el negocio este modelo para reducir las perdidas por fraude, como lo evaluarías frente a las necesidades del negocio (diferente a las métricas ya usadas) y comenta brevemente como llevarías a producción este proyecto.
+
+7. Comenta como podrías hacer deploy de este modelo a producción: Con que tecnologías y en que infraestrúctura. Bonus points: Montalo.
 
 * Nota1: Crea un repositorio que contenga en el readme.md las instrucciones necesarias para instalar y correr tu proyecto.
 
 
-* Nota2: Muchos éxitos!, cualquier duda puedes escribirme por wp: 3113716605, en serio, cualquier duda.
+* Nota2: Muchos éxitos!, cualquier duda puedes escribirnos a datateam@grupor5.com. En serio, cualquier duda, aunque nos guardamos el derecho de ver que repsondemos y que no!
 
 
 
