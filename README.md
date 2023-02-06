@@ -93,3 +93,9 @@ El modelo al aportar las predicciones de posibles fraudes de acuerdo a las carac
 
 Crear un dockerfile basada en una imagen de python que instale los paquetes usados en el proyecto copie el modelo y el codigo fuente del predict al contenedor y como entry point del contenedor definir levantar la api utilizando un servidor web como uvicorn. Posterior a eso publicar la imagen a un repositorio de imagenes ECR de AWS para luego utilizarlo en el servicio ECS de AWS. Posteriormente, conectar el cluster de contenedores al servicio de api gateway de AWS que controlaria el trafico de nuestra api.
 
+
+* **Instrucciones de uso**
+
+Para correr el proyecto es necesario instalar las librerias en requierements.txt y posterior a eso ejecutar los archivos .py preprocessing, train y predict (este esta adecuado para un caso particular). El archivo app.py contiene un servidor web local que permite visualizar las predicciones a partir de un request body. 
+Dentro de la carpeta model se encuetra el modelo entrenado el cual es output del archivo train.py.
+
