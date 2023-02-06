@@ -1,6 +1,7 @@
 
 import pandas as pd
 import numpy as np
+import configparser
 from sqlalchemy import create_engine
 from sqlalchemy.sql import text
 from sklearn.model_selection import train_test_split
@@ -8,7 +9,15 @@ from imblearn.over_sampling import RandomOverSampler
 
 
 def get_data_for_training():
-    engine = create_engine('postgresql+psycopg2://postgres:postgres@localhost/frauds')
+    
+    config = configparser.ConfigParser()
+    config.read_file(open('/Users/esperanza.orozco/LauraOrozco/r5-ds-challenge/config.ini'))
+    host = config['dbcredentials']['db_host']
+    user = config['dbcredentials']['username']
+    passwd = config['dbcredentials']['password']
+    db = config['dbcredentials']['db_name']
+
+    engine = create_engine(f'postgresql+psycopg2://{user}:{passwd}@{host}/{db}')
     with engine.connect() as con:
     
         query = """SELECT DISTINCT monthh,
@@ -55,14 +64,14 @@ def get_data_for_training():
 
     fraud_final[numerical] = fraud_final[numerical].apply(pd.to_numeric)
 
-    fraud_final.drop(['policynumber', 'repnumber'], axis=1, inplace=True)
+    fraud_final.drop(['policynumber', 'repnumber', 'yearr'], axis=1, inplace=True)
 
     fraud_dummies = pd.get_dummies(fraud_final, columns=['monthh', 'weekofmonth', 'dayofweek', 'make', 'accidentarea', 'dayofweekclaimed', 'monthclaimed',
                                  'weekofmonthclaimed', 'sex', 'maritalstatus', 'fault', 'vehiclecategory', 'vehicleprice',
                                  'driverrating', 'days_policy_accident', 'days_policy_claim', 'pastnumberofclaims', 'ageofvehicle',
                                  'ageofpolicyholder', 'policereportfiled', 'witnesspresent', 'agenttype', 'numberofsuppliments',
-                                 'addresschange_claim', 'numberofcars', 'yearr', 'basepolicy', 'policytype'],
-                    drop_first=True)
+                                 'addresschange_claim', 'numberofcars', 'basepolicy', 'policytype']
+)
 
 
     X = fraud_dummies.drop(columns=['fraudfound_p'])
