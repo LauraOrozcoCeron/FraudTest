@@ -2,35 +2,10 @@
 
 Los principales proyectos de R5 vienen encaminados al sector vehículos. Usted deberá apoyarse de sus conocimientos para cumplir el siguiente objetivo:
 
-* **Reducir perdidas por fraude en las reclamaciones de siniestro**
+## Fraude en las reclamaciones de siniestro
 
-¿Qué debe incluir tu solución?
-
-1. Cree una base de datos en PostgreSql (puede ser local) que debe contener una tabla llamada "fraudes" con la información contenida en ./data/fraude.csv. (el archivo ./data/create_table.txt te ayudará)
-
-2. Con su base de datos cargada, usando solo SQL replique la siguiente salida sin usar subconsultas.
-
-![Salidaesperada](./data/salida_esperada.png)
-
-3. conéctese desde Python a la tabla fraudes (la de la base de datos creada, no directamente del .csv) y léala con un query que la traiga lo más limpia posible.
-
-4. en la carpeta *./notebooks* desarrolle o un notebook de Jupyter o un script de Python su solución que debe contener al menos: 
-
-* Un análisis descriptivo de los datos 
-* Un modelo de machine learning que prediga la probabilidad de que una reclamación sea o no un fraude (no se enrede mucho con hacer el mejor modelo, enfóquese en que sea algo funcional).
-
-5. automaticé su pipeline de entrenamiento en el archivo *train.py*, imprimiendo por consola las métricas o exportando los principales hallazgos. Exporte el modelo y lo guarda en la carpeta *./models*. En el archivo *predict.py* escriba el pipeline de predicción, pruébelo con el caso particular que usted desee e imprima por consola este caso y su probabilidad predicha.
-
-6. Comenta como utilizaría el negocio este modelo para reducir las perdidas por fraude, como lo evaluarías frente a las necesidades del negocio (diferente a las métricas ya usadas) y comenta brevemente como llevarías a producción este proyecto.
-
-7. Comenta como podrías hacer deploy de este modelo a producción: Con que tecnologías y en que infraestrúctura. Bonus points: Montalo.
-
-* Nota1: Crea un repositorio que contenga en el readme.md las instrucciones necesarias para instalar y correr tu proyecto.
-
-
-* Nota2: Muchos éxitos!, cualquier duda puedes escribirnos a datateam@grupor5.com. En serio, cualquier duda, aunque nos guardamos el derecho de ver que repsondemos y que no!
-
-
+* **Objetivo:** Un modelo de machine learning que prediga la probabilidad de que una reclamación sea o no un fraude. *Modelo funcional*
+**Contexto:** La base de datos corresponde a data de 1994 a 1996 y cada registro corresponde a un individuo que realizo una reclamacion del seguro del vehiculo por un accidente. De acuerdo al planteamiento del problema, es posible que se presenten casos de fraude en el seguro lo que se traduce en reclamos con informacion falsa o sobre exagerada para el cobro del mismo. 
 
 ## DICCIONARIO DE DATOS:
 
@@ -100,4 +75,21 @@ Columnas (Columns):
 * 31) Year: Año en el que ocurrió el accidente.
 
 * 32) BasePolicy: Tipo de seguro, igual a PolicyType. (Tipe of ensurance)
+
+# Modelo de clasificacion:
+
+De acuerdo a la data suministrada, tenemos un caso que se puede resolver a traves de aprendizaje supervisado, para este problema seleccione el modelo XGBoost que puede resolver esta problematica, es un modelo minimo viable el cual se le realizo optimizacion de hiperparametros para mejorar su rendimiento. Para el modelo se utiilizaron las siguientes variables: 'monthh', 'weekofmonth', 'dayofweek', 'make', 'accidentarea', 'dayofweekclaimed', 'monthclaimed',
+'weekofmonthclaimed', 'sex', 'maritalstatus', 'fault', 'vehiclecategory', 'vehicleprice',
+'driverrating', 'days_policy_accident', 'days_policy_claim', 'pastnumberofclaims', 'ageofvehicle',
+'ageofpolicyholder', 'policereportfiled', 'witnesspresent', 'agenttype', 'numberofsuppliments',
+'addresschange_claim', 'numberofcars', 'yearr', 'basepolicy', 'policytype'.
+
+
+* **Metricas de negocio**
+
+El modelo al aportar las predicciones de posibles fraudes de acuerdo a las caracteristicas evaluadas permitiria crear estrategias de revision exhaustiva de documentos que permitan determinar la veracidad de la informacion suministrada por el siniestrado. En cuanto a metricas del negocio evaluaria la proporcion de polizas aprobadas por la entidad, si al realizar la evaluacion exahustiva se logra reducir el cobro de seguros.
+
+* **Despliegue**
+
+Crear un dockerfile basada en una imagen de python que instale los paquetes usados en el proyecto copie el modelo y el codigo fuente del predict al contenedor y como entry point del contenedor definir levantar la api utilizando un servidor web como uvicorn. Posterior a eso publicar la imagen a un repositorio de imagenes ECR de AWS para luego utilizarlo en el servicio ECS de AWS. Posteriormente, conectar el cluster de contenedores al servicio de api gateway de AWS que controlaria el trafico de nuestra api.
 
