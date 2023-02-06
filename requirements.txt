@@ -1,0 +1,6 @@
+psycopg2==2.9.5
+sqlalchemy
+xgboost==1.7.3
+pandas-profiling==3.6.6
+uvicorn
+fastapi
